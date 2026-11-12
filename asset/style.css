@@ -1,0 +1,267 @@
+:root {
+  --navy: #0a1a33;
+  --navy-light: #11284d;
+  --green: #4cc94a;
+  --blue: #2e9be6;
+  --text: #eef3fa;
+  --muted: #9db0c9;
+  --line: rgba(255, 255, 255, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  font-family: "Outfit", "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% -10%, rgba(76, 201, 74, 0.22), transparent 40%),
+    radial-gradient(circle at 90% 110%, rgba(46, 155, 230, 0.25), transparent 45%),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 48px 48px,
+    var(--navy);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  animation: rise 0.7s ease both;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  height: 64px;
+  padding: 6px 10px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green);
+}
+
+h1 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  background: linear-gradient(90deg, #ffffff 30%, #a6e8a4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  min-height: 360px;
+  animation: rise 0.7s 0.15s ease both;
+}
+
+.map {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--navy-light);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(255, 255, 255, 0.03);
+  transition: box-shadow 0.3s ease;
+}
+
+.map:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(76, 201, 74, 0.18);
+}
+
+.map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+}
+
+.map:not(:has(iframe)) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.map:not(:has(iframe))::before {
+  content: "\1F5FA\FE0F";
+  font-size: 4rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.map:not(:has(iframe))::after {
+  content: "Your map will appear here\A Paste your Ezymaps embed code into index.html";
+  white-space: pre-line;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-top: 1rem;
+  background: linear-gradient(90deg, var(--green), var(--blue), transparent) top left / 100% 1px no-repeat;
+  font-size: 0.95rem;
+  color: var(--muted);
+  animation: rise 0.7s 0.3s ease both;
+}
+
+.built-by {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.built-by::before {
+  content: "\1F4CD";
+  margin-right: 0.4rem;
+}
+
+.built-by span {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.about {
+  max-width: 34rem;
+  margin-left: auto;
+  text-align: right;
+}
+
+.about strong {
+  color: var(--text);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 201, 74, 0.7);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px rgba(76, 201, 74, 0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .logo {
+    height: 48px;
+  }
+
+  .badge {
+    display: none;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
